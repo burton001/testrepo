@@ -1,0 +1,23 @@
+select CREATED_AT, ID, UUID, PROGRESS, DELETED from nova.instances
+
+#!/bin/bash
+db2  "connect to nova"
+db2  " select * from nova.instances>> output"
+db2 -qf  sqlinq1  -z ~/output2 | grep 3d34e04-4bdc-400e-b7fd-8ef8b64ce869
+
+db2 "select * from nova.instance_metadata where instance_uuid = 'a3986f1b-54d0-41a5-a27a-abb19e5db6be'"
+
+db2 select CREATED_AT, ID, UUID, PROGRESS, DELETED from nova.instances
+
+CREATED_AT                 ID          UUID                                 PROGRESS    DELETED
+-------------------------- ----------- ------------------------------------ ----------- -----------
+2015-08-24-18.30.49.583031           1 0b0a67b4-71c6-4228-827e-3a462a7698d5           0           1
+2015-08-24-18.30.51.070368           2 ffbcc3bb-ea1a-4b76-bb98-06530393660a           0           2
+2015-08-24-18.30.52.347511           3 1ebdccd0-0765-4711-8aeb-d38d799bb61c           0           3
+2015-08-25-13.51.11.824087          21 bad4c519-06fb-4016-9132-4be363744180           0          21
+2015-08-25-13.51.12.167884          22 9d3fe870-e53c-40fc-992b-37ea2cb30b11           0          22
+2015-08-28-22.00.22.126940          41 4d07b970-eaa4-443d-9d08-bad0fa11ed66           0          41
+2015-08-31-17.53.11.921687          61 a6f7731f-5cb1-4bba-85b5-4990b3d65852           0          61
+2015-08-31-17.55.50.751259          62 852c015d-9f48-4361-ab68-1fd13daf28b7           0          62
+2015-09-08-16.44.47.563484          63 4b1743c6-7bde-46c4-a97a-5aa1e7363d57           0          63
+
